@@ -62,6 +62,7 @@ mvnw.cmd spring-boot:run
 
 <h4>Structure du projet :</h4>
 
+<code>
 PooGLog/
 ├── src/
 │   ├── main/
@@ -84,7 +85,7 @@ PooGLog/
 │   └── test/                          # Tests unitaires
 ├── mvnw, mvnw.cmd                     # Maven Wrapper (Windows & Linux)
 ├── pom.xml                            # Dépendances du projet
-
+</code>
 ---
 <h4>Note :</h4>
 
