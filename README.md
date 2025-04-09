@@ -22,7 +22,7 @@
 <h4>Initialisation :</h4>
 
 <ol><li>Cloner le projet :</li></ol>
-```bash
+``` Bash
 git clone https://github.com/ton-utilisateur/PooGLog.git
 cd PooGLog
 ```
