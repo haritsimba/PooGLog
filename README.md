@@ -21,11 +21,9 @@
 
 <h4>Initialisation :</h4>
 
-<ol>
-    <li>Cloner le projet :</li>
-</ol>
-
-##
-<clipboard-copy><tab><tab>git clone https://github.com/ton-utilisateur/PooGLog.git</clipboard-copy>
-<tab><tab>cd PooGLog
+<ol><li>Cloner le projet :</li></ol>
+```bash
+git clone https://github.com/ton-utilisateur/PooGLog.git
+cd PooGLog
+```
 <ol start="2"> <li>Créer un fichier <code>application.yaml</code> dans le dossier <code>src/main/resources/</code></li> <li>Copier le contenu de <code>application.yaml.example</code> dans <code>application.yaml</code> et ajuster selon votre configuration</li> </ol> <ol start="4"> <li>Installer les dépendances :</li> </ol>
