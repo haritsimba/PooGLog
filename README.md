@@ -95,7 +95,7 @@ PooGLog/
     <p>John : <code>JoNomDeMaClasse</code>, <code>JoMonEntite</code></p>
     <li>Pour éviter les conflits sur GitHub, il est préférable que chaque étudiant possède sa propre branche</li>
     <li>Veuillez suivre l'architecture du projet pour faciliter la fusion</li>
-    <li>Vous pouvez tester votre api avec <a href="https://www.postman.com/downloads/">Postman</a> ou <a href="https://www.usebruno.com/downloads">Bruno (Je vous le récommande)</a> ou via la documentation dans <code>(http://localhost:votre_port/api-docs-ui.html)</code></li>
+    <li>Vous pouvez tester votre api avec <a href="https://www.postman.com/downloads/">Postman</a> ou <a href="https://www.usebruno.com/downloads">Bruno (Je vous le récommande)</a> ou via la documentation dans <code>http://localhost:votre_port/api-docs-ui.html</code></li>
 </ul>
 
 ---
