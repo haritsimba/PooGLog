@@ -104,4 +104,5 @@ PooGLog/
 <ul>
     <li>Pour ceux qui ne sont pas familiarisés avec Spring Boot, je vous recommande <a href="https://www.youtube.com/watch?v=k6Nmt-l1Bzc&list=PLbZw3gn9fSnTs4IZMCzTPjNJ5cmP4_HqZ">cette chaîne YouTube</a></li>
     <li>Pour ceux qui n'ont jamais utilisé lombok : <a href="https://www.baeldung.com/intro-to-project-lombok">pour éviter les tâches répétitives (constructeur,getters,setters,...)</a></li>
+    <li><a href="https://medium.com/@bdamianchamel/relationships-in-spring-data-jpa-7c5ceaf05f29">Rélation dans spring data jpa</a></li>
 </ul>
