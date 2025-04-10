@@ -91,12 +91,26 @@ PooGLog/
 <h4>Note :</h4>
 
 <ul>
-    <li>Il est préférable que chaque étudiant ajoute un préfixe pour ses classes afin d'éviter les conflits, par exemple :</li>
-    <p>Franck : <code>FrNomDeMaClasse</code>, <code>FrMonEntite</code></p>
-    <p>John : <code>JoNomDeMaClasse</code>, <code>JoMonEntite</code></p>
-    <li>Pour éviter les conflits sur GitHub, il est préférable que chaque étudiant possède sa propre branche</li>
-    <li>Veuillez suivre l'architecture du projet pour faciliter la fusion</li>
-    <li>Vous pouvez tester votre api avec <a href="https://www.postman.com/downloads/">Postman</a> ou <a href="https://www.usebruno.com/downloads">Bruno (Je vous le récommande)</a> ou via la documentation dans <code>http://localhost:votre_port/api-docs-ui.html</code></li>
+<li>Il est préférable que chaque étudiant travail dans un package spécifique afin d'éviter les conflits, par exemple :</li>
+<p>John→entités :</p> 
+<code>
+entities/                   # Entités JPA pour la base de données   
+├── john/                   # Package spécifique à l'étudiant john pour ces entités             
+│   ├── MonEntite1.java
+│   ├──MonEntite2.java
+</code><br>
+
+<p>John→services :</p>
+<code>
+services/                   # Logique métier de l'application   
+├── john/                   # Package spécifique à l'étudiant john pour ces services           
+│   ├──MonService1.java
+│   ├──MonService2.java
+</code><br>
+
+<li>Pour éviter les conflits sur GitHub, il est préférable que chaque étudiant possède sa propre branche</li>
+<li>Veuillez suivre l'architecture du projet pour faciliter la fusion</li>
+<li>Vous pouvez tester votre api avec <a href="https://www.postman.com/downloads/">Postman</a> ou <a href="https://www.usebruno.com/downloads">Bruno (Je vous le récommande)</a> ou via la documentation dans <code>http://localhost:votre_port/api-docs-ui.html</code></li>
 </ul>
 
 ---
