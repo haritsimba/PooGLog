@@ -98,7 +98,7 @@ entities/                   # Entités JPA pour la base de données
 ├── john/                   # Package spécifique à l'étudiant john pour ces entités             
 │   ├── MonEntite1.java
 │   ├──MonEntite2.java
-</code>
+</code><br>
 
 <p>John→services :</p>
 <code>
@@ -106,7 +106,7 @@ services/                   # Logique métier de l'application
 ├── john/                   # Package spécifique à l'étudiant john pour ces services           
 │   ├──MonService1.java
 │   ├──MonService2.java
-</code>
+</code><br>
 
 <li>Pour éviter les conflits sur GitHub, il est préférable que chaque étudiant possède sa propre branche</li>
 <li>Veuillez suivre l'architecture du projet pour faciliter la fusion</li>
