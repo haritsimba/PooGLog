@@ -91,7 +91,7 @@ PooGLog/
 <h4>Note :</h4>
 
 <ul>
-    <li>Il est préférable que chaque étudiant dans une package spécifique afin d'éviter les conflits, par exemple :</li>
+    <li>Il est préférable que chaque étudiant travail dans un package spécifique afin d'éviter les conflits, par exemple :</li>
 <p>John→entités :</p> 
 <code>
 entities/                   # Entités JPA pour la base de données   
