@@ -1,4 +1,4 @@
-package isstm.glog.poo.controllers;
+package isstm.glog.poo.controllers.haritsimba;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "test")
 @AllArgsConstructor
-public class FrTest {
+public class Test {
     @GetMapping(path = "")
     public String initializationTest(){
         return "It's working";
