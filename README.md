@@ -28,7 +28,7 @@
 <ol><li>Cloner le projet :</li></ol>
 
 ```bash
-git clone https://github.com/ton-utilisateur/PooGLog.git
+git clone https://github.com/haritsimba/PooGLog.git
 cd PooGLog
 ```
 
