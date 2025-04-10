@@ -32,8 +32,19 @@ git clone https://github.com/haritsimba/PooGLog.git
 cd PooGLog
 ```
 
-<ol start="2"> <li>Créer un fichier <code>application.yaml</code> dans le dossier <code>src/main/resources/</code></li> <li>Copier le contenu de <code>application.yaml.example</code> dans <code>application.yaml</code> et ajuster selon votre configuration</li> </ol>
-<ol start="4"><li>Installer les dépendances :</li></ol>
+<ol start="2"> <li>Créer un fichier <code>application.yaml</code> dans le dossier <code>src/main/resources/</code> et Copier les contenus de <code>src/main/resources/application.yaml.example</code> dans <code>src/main/resources/application.yaml</code></li> </ol>
+
+✅ Linux / macOS
+
+```bash
+cp src/main/resources/application.yaml.example src/main/resources/application.yaml
+```
+
+🪟 Windows
+
+```bash
+copy src\main\resources\application.yaml.example src\main\resources\application.yaml
+```
 
 ✅ Linux / macOS
 
@@ -42,7 +53,11 @@ chmod +x mvnw
 ./mvnw clean install
 ```
 
+<ol start="3"><li>Ajuster <code>src/main/resources/application.yaml.example</code> selon vos configurations</li></ol>
+<ol start="4"><li>Installer les dépendances :</li></ol>
+
 🪟 Windows
+
 ```bash
 mvnw.cmd clean install
 ```
@@ -97,7 +112,7 @@ PooGLog/
 entities/                   # Entités JPA pour la base de données   
 ├── john/                   # Package spécifique à l'étudiant john pour ces entités             
 │   ├── MonEntite1.java
-│   ├──MonEntite2.java
+│   └──MonEntite2.java
 </code><br>
 
 <p>John→services :</p>
@@ -105,7 +120,7 @@ entities/                   # Entités JPA pour la base de données
 services/                   # Logique métier de l'application   
 ├── john/                   # Package spécifique à l'étudiant john pour ces services           
 │   ├──MonService1.java
-│   ├──MonService2.java
+│   └──MonService2.java
 </code><br>
 
 <li>Pour éviter les conflits sur GitHub, il est préférable que chaque étudiant possède sa propre branche</li>
