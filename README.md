@@ -46,7 +46,7 @@ cp src/main/resources/application.yaml.example src/main/resources/application.ya
 copy src\main\resources\application.yaml.example src\main\resources\application.yaml
 ```
 
-<ol start="3"><li>Créer un variable d'environnemet JAVA_HOME si c'est ne pas deja fait pour windows<li></ol>
+<ol start="3.0"><li>Créer un variable d'environnemet JAVA_HOME si c'est ne pas deja fait pour windows<li> </ol>
 
 🪟 Windows
 
