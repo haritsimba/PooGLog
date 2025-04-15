@@ -46,15 +46,29 @@ cp src/main/resources/application.yaml.example src/main/resources/application.ya
 copy src\main\resources\application.yaml.example src\main\resources\application.yaml
 ```
 
+<ol start="3"><li>Créer un variable d'environnemet JAVA_HOME si c'est ne pas deja fait pour windows<li><ol>
+
+🪟 Windows
+
+```bash
+setx /m JAVA_HOME "<dossier_installation_jdk">
+```
+
+✅ Linux / macOS
+
+```bash
+export JAVA_HOME=<dossier_installation_java>
+```
+
+<ol start="3"><li>Ajuster <code>src/main/resources/application.yaml.example</code> selon vos configurations</li></ol>
+<ol start="4"><li>Installer les dépendances :</li></ol>
+
 ✅ Linux / macOS
 
 ```bash
 chmod +x mvnw
 ./mvnw clean install
 ```
-
-<ol start="3"><li>Ajuster <code>src/main/resources/application.yaml.example</code> selon vos configurations</li></ol>
-<ol start="4"><li>Installer les dépendances :</li></ol>
 
 🪟 Windows
 
