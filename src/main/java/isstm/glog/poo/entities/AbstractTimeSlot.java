@@ -1,16 +1,29 @@
 package isstm.glog.poo.entities;
 
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import isstm.glog.poo.entities.haritsimba.Classe;
+import isstm.glog.poo.entities.haritsimba.Subject;
+import isstm.glog.poo.entities.haritsimba.Teacher;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
 
 @MappedSuperclass
-public abstract class AbstractSchedule {
+@Getter
+@Setter
+public abstract class AbstractTimeSlot {
 
-    @OneToOne
-    AbstractSubject subject;
-    @OneToMany
-    AbstractTeacher teacher;
-    @OneToMany
-    AbstractClasse classe;
+    @Column(name = "time_slot_id")
+    protected Long timeSlotId;
+
+    @ManyToOne(targetEntity = Subject.class)
+    @JoinColumn(name = "subject_id")
+    protected AbstractSubject subject;
+    @ManyToOne(targetEntity = Teacher.class)
+    @JoinColumn(name = "teacher_id")
+    protected AbstractTeacher teacher;
+    @ManyToOne(targetEntity = Classe.class)
+    @JoinColumn(name = "classe_id")
+    protected AbstractClasse classe;
 }
