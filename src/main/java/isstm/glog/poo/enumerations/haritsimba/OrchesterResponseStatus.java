@@ -1,6 +1,9 @@
 package isstm.glog.poo.enumerations.haritsimba;
 
-public enum OrchersterResponseStatus
+public enum OrchesterResponseStatus
 {
-    SUCCESS,UNAUTHORIZED,FAILED,ERROR
+    SUCCESS,UNAUTHORIZED,FAILED,ERROR;
+    public boolean isSuccessFull(){
+        return this == SUCCESS;
+    }
 }
