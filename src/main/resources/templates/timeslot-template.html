@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Emploi du temps - Examens L2 GI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+        h2, h4, p {
+            text-align: center;
+            margin: 0;
+        }
+        .university {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 6px;
+            text-align: center;
+        }
+        th {
+            background-color: #e0e0e0;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: right;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <img src="file:images/logo_isstm.png" alt="Logo UMJ" width="80" />
+    <img src="file:images/logo_univ_mahajanga.png" alt="Logo ESTM" width="80" />
+</div>
+
+<div class="university">
+    <h2>UNIVERSITÉ DE MAHAJANGA</h2>
+    <h4>École Supérieure des Sciences et Technologies</h4>
+    <p><strong>CALENDRIER DES EXAMENS DE LICENCE 2 - Génie Industriel</strong></p>
+    <p>Session 1 – Semestre 3 – Année universitaire 2024/2025</p>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Heure</th>
+        <th>Lundi</th>
+        <th>Mardi</th>
+        <th>Mercredi</th>
+        <th>Jeudi</th>
+        <th>Vendredi</th>
+        <th>Samedi</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row : ${schedule}">
+        <td th:text="${row.key}"></td>
+        <td th:each="day : ${days}">
+        <span th:if="${row.value[day] != null}"
+              th:text="${row.value[day].subject.name + ' - ' + row.value[day].teacher.name}">
+        </span>
+        </td>
+    </tr>
+    <tr>
+        <td>14:00 - 17:00</td>
+        <td>Probabilités - M. Raphaëlson</td>
+        <td>Initiation au Matlab - Mme Olga</td>
+        <td>Anglais - Mme Niasoa</td>
+        <td>Transfert Thermique - M. Riheulhaja</td>
+        <td>RDM Appliquée - M. Riheulhaja</td>
+        <td></td>
+    </tr>
+
+    </tbody>
+</table>
+
+<div class="footer">
+    Mahajanga, le 26 avril 2025<br />
+    Le Chef de département
+</div>
+</body>
+</html>
