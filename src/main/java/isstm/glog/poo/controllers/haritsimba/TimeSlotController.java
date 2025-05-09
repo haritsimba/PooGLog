@@ -1,5 +1,7 @@
 package isstm.glog.poo.controllers.haritsimba;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import isstm.glog.poo.dtos.haritsimba.request.CreateTimeSlotFullCheck;
 import isstm.glog.poo.dtos.haritsimba.response.OrchesterResponse;
 import isstm.glog.poo.entities.haritsimba.TimeSlot;
@@ -14,11 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "timeSlot")
+@Tag(name = "Emplois du temps", description = "Operations liées aux emplois du temps")
 public class TimeSlotController {
     @Autowired
     TimeSlotOrchesterService timeSlotOrchesterService;
 
     @PostMapping("")
+    @Operation(
+            summary = "Ajouter une emploi de temps",
+            description = "Ajout d'emploi du temps"
+    )
     public ResponseEntity<?> createTimeSlot(@RequestBody CreateTimeSlotFullCheck timeSlotFullCheck){
         OrchesterResponse timeSlotOrchesterResponse = timeSlotOrchesterService.createTimeSlotCheckSubjectAndTeacher(
                 timeSlotFullCheck.getDay(),

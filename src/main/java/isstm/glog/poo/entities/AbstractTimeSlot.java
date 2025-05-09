@@ -20,9 +20,11 @@ public abstract class AbstractTimeSlot {
     @ManyToOne(targetEntity = Subject.class)
     @JoinColumn(name = "subject_id")
     protected AbstractSubject subject;
+
     @ManyToOne(targetEntity = Teacher.class)
     @JoinColumn(name = "teacher_id")
     protected AbstractTeacher teacher;
+
     @ManyToOne(targetEntity = Classe.class)
     @JoinColumn(name = "classe_id")
     protected AbstractClasse classe;

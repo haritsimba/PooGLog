@@ -14,6 +14,7 @@
     @AllArgsConstructor
     @Getter
     @Setter
+    @Table(name = "student")
     public class Classe extends AbstractClasse {
         @Id
         @GeneratedValue(strategy = GenerationType.TABLE)
