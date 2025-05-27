@@ -7,6 +7,8 @@ import isstm.glog.poo.repositories.elio.PreInscriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PreInscriptionService {
 
@@ -74,6 +76,7 @@ public class PreInscriptionService {
         preInscription.setParents(parents);
         preInscription.setParcoursAcademique(PA);
         preInscription.setDocuments(docs);
+        preInscription.setStatus(Status.EN_ATTENTE);
          return preInscription;
     }
 
@@ -84,7 +87,18 @@ public class PreInscriptionService {
         response.setEmail(entity.getInformationsPersonnelles().getEmail());
         response.setTelephone(entity.getInformationsPersonnelles().getTelephone());
         response.setDateNaissance(entity.getInformationsPersonnelles().getDateNaissance());
-        response.setStatus("Succès"); // tu peux adapter selon besoin
+        response.setStatus(entity.getStatus());
         return response;
+    }
+
+    public PreInscription updateStatus(Long id, Status s) {
+        Optional<PreInscription> p = repository.findById(id);
+        if (p.isPresent()){
+            PreInscription preInscription = p.get();
+            preInscription.setStatus(s);
+            return repository.save(preInscription);
+        }else{
+            return null;
+        }
     }
 }

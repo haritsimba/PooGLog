@@ -14,3 +14,4 @@
         @Query("SELECT p FROM PreInscription p WHERE p.informationsPersonnelles.cin = :cin")
         public Optional<PreInscription> findByCin(@Param("cin") String cin);
     }
+

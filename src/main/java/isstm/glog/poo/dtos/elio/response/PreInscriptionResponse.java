@@ -1,5 +1,6 @@
 package isstm.glog.poo.dtos.elio.response;
 
+import isstm.glog.poo.entities.elio.Status;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +15,6 @@ public class PreInscriptionResponse {
     private String email;
     private String telephone;
     private LocalDate dateNaissance;
-    private String status; // pour l'état de l'inscription, comme "Succès" ou "Échec"
+    private Status status; // pour l'état de l'inscription, comme "Succès" ou "Échec"
 
 }

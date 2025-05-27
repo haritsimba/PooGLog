@@ -1,5 +1,6 @@
 package isstm.glog.poo.controllers.elio;
 
+import isstm.glog.poo.dtos.elio.request.UpdateStatusRequest;
 import isstm.glog.poo.dtos.elio.response.FileUploadOut;
 import isstm.glog.poo.dtos.elio.response.PreInscriptionResponse;
 import isstm.glog.poo.dtos.elio.request.PreInscriptionRequest;
@@ -110,4 +111,12 @@ public class PreInscriptionController {
         }
         return null;
     }
+
+    @PutMapping("/{id}")
+    public PreInscriptionResponse updateStatus(
+            @PathVariable(name = "id", value = "id") Long id,
+            @RequestBody  UpdateStatusRequest statusRequest) {
+        return service.toDto(service.updateStatus(id, statusRequest.getStatus()));
+    }
+
 }

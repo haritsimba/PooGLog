@@ -1,5 +1,6 @@
 package isstm.glog.poo.dtos.elio.request;
 
+import isstm.glog.poo.entities.elio.Status;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -54,6 +55,8 @@ public class PreInscriptionRequest {
     private String niveau;
     private String mention;
     private String parcours;
+    private Status status;   // doit valoir ACCEPTE ou REFUSE
+
 
 
 }

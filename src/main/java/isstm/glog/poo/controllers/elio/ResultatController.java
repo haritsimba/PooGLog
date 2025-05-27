@@ -16,11 +16,9 @@ public class ResultatController {
 
     @Autowired
     private PreInscriptionRepository preInscriptionRepo;
-
-    @Autowired
-
     @GetMapping("/preinscription/{cin}")
-    public ResponseEntity<?> getPreinscription(@PathVariable String cin) {
+    public ResponseEntity<?> getPreinscription(@PathVariable("cin") String cin) {
+        System.out.println(cin);
         Optional<PreInscription> preInscriptionOptional = preInscriptionRepo.findByCin(cin);
         if (preInscriptionOptional.isPresent()){
             return ResponseEntity.ok(preInscriptionOptional.get());

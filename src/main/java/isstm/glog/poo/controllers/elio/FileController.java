@@ -17,7 +17,7 @@ public class FileController {
     FileService fileService;
 
     @GetMapping("download/{fileId}")
-    public ResponseEntity<Resource> getFile(@PathVariable String fileId){
+    public ResponseEntity<Resource> getFile(@PathVariable(name = "fileId",value = "fileId") String fileId){
         ResponseEntity<FileEntity> file= fileService.getFile(fileId);
         FileEntity fileBody = file.getBody();
         return ResponseEntity.ok()
@@ -27,7 +27,7 @@ public class FileController {
     }
 
     @GetMapping("view/{fileId}")
-    public ResponseEntity<Resource> viewFile(@PathVariable String fileId) {
+    public ResponseEntity<Resource> viewFile(@PathVariable(value = "fileId",name = "fileId") String fileId) {
         ResponseEntity<FileEntity> file = fileService.getFile(fileId);
         FileEntity fileBody = file.getBody();
 
