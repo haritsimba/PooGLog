@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
+import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,8 +50,8 @@ public class CertificateService {
             deliveredCertificateCountService.incrementNumberOfCertificateDelivered();
             return getAndSetFieldsInPdf(type, model, opt);
         }
-        catch(Exception e){
-            throw new RuntimeException("Erreur lors de la génération du certificat", e);
+        catch(RuntimeException e){
+            throw new RuntimeException(e.getMessage());
         }
         
     } 
@@ -75,6 +76,22 @@ public class CertificateService {
     private List<String> getModelChampsByType(String type){
         return switch(type){
             case "Certificat de Scolarité" -> List.of("ref_certificat", "name_chef_scol", "name_firstname", "date_birth", "father_name", "mother_name", "mention", "department", "level" ,"registration_number" ,"year_univ");
+            case "Attestation de réussite" -> List.of(
+                "year_univ", 
+                "ref_certificat_attestation", 
+                "label_mr_ms", 
+                "name", 
+                "label_date_birth", 
+                "date_birth", 
+                "place_birth", 
+                "registration_number", 
+                "name_diplome" ,
+                "mention",
+                "department",
+                "mention_note",
+                "date_now"
+            );
+
             default -> List.of();
         };            
     }
@@ -85,7 +102,7 @@ public class CertificateService {
     private byte[] getAndSetFieldsInPdf(String type, File modelPdf, Optional<StudentRequested> optional_student){
 
         SignatoryResponse signatoryChief = getSignatoryByType(type);
-        Map<String, String> infosOfStudent = studentRequestedUtils.formateInfosOfStudentRequested(optional_student, signatoryChief);
+        Map<String, String> infosOfStudent = studentRequestedUtils.formateInfosOfStudentRequested(type, optional_student, signatoryChief);
         List<String> champsModel = getModelChampsByType(type);
        
 
@@ -96,7 +113,17 @@ public class CertificateService {
             if(acroForm != null){
                    
                 for(String champ : champsModel){
-                    acroForm.getField(champ).setValue(infosOfStudent.get(champ));
+                    PDField field = acroForm.getField(champ);
+                    if (field == null) {
+                        throw new RuntimeException("⚠ Champ introuvable dans le PDF : " + champ);
+                    }
+
+                    String valeur = infosOfStudent.get(champ);
+                    if (valeur == null) {
+                        throw new RuntimeException("⚠ Valeur manquante pour le champ : " + champ);
+                    }
+
+                    field.setValue(valeur);
                 }
         
                 document.save(outputStream);

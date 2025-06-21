@@ -48,7 +48,7 @@ public class CertificateController {
             .body(certificateService.createNewCertificate(request.getType(), request.getRegistrationNumber()));
         }
         catch(RuntimeException e){
-            return ResponseEntity.status(500).body("Erreur interne lors du chargement du fichier pdf");
+            return ResponseEntity.status(500).body(e.getMessage());
         }
     }
 }

@@ -14,6 +14,7 @@ public class CertificateRepository {
 
     static{
         certificates.put("Certificat de Scolarité", new Certificate("src/main/resources/sarobidy/models/Certificat de Scolarite.pdf"));
+        certificates.put("Attestation de réussite", new Certificate("src/main/resources/sarobidy/models/Attestation de reussite.pdf"));
     
     }
 

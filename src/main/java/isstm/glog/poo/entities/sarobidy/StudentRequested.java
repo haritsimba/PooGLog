@@ -30,6 +30,7 @@ public class StudentRequested {
 
     String fatherName, motherName;
 
-    String registrationNumber;
+    String registrationNumber, sexe;
+
 
 }
