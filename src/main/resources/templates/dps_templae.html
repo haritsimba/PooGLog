@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Planning Hebdomadaire</title>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          text-align: center;
+        }
+        th, td {
+          border: 1px solid #aaa;
+          padding: 8px;
+        }
+        th {
+          background-color: #f0f0f0;
+        }
+        td.empty {
+          background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<h2>Emploi du temps</h2>
+<table id="scheduleTable">
+    <thead>
+    <tr>
+        <th>Heure</th>
+        <th>Lundi</th>
+        <th>Mardi</th>
+        <th>Mercredi</th>
+        <th>Jeudi</th>
+        <th>Vendredi</th>
+        <th>Samedi</th>
+        <th>Dimanche</th>
+    </tr>
+    </thead>
+    <tbody id="scheduleBody"></tbody>
+</table>
+
+<script>
+    const schedule = [
+      {
+        hour: "8h-10h",
+        events: [
+          { name: "Mathématiques", rowSpan: 2 },
+          { name: "Physique", rowSpan: 1 },
+          { name: "skip" },
+          { name: "skip" },
+          { name: "Anglais", rowSpan: 1 },
+          { name: "skip" },
+          { name: "Repos", rowSpan: 2 },
+        ]
+      },
+      {
+        hour: "10h-12h",
+        events: [
+          { name: "skip" },
+          { name: "Chimie", rowSpan: 1 },
+          { name: "Biologie", rowSpan: 1 },
+          { name: "skip" },
+          { name: "Histoire", rowSpan: 2 },
+          { name: "skip" },
+          { name: "skip" }
+        ]
+      },
+      {
+        hour: "12h-14h",
+        events: [
+          { name: "Déjeuner", rowSpan: 1 },
+          { name: "Déjeuner", rowSpan: 1 },
+          { name: "Déjeuner", rowSpan: 1 },
+          { name: "Déjeuner", rowSpan: 1 },
+          { name: "skip" },
+          { name: "Déjeuner", rowSpan: 1 },
+          { name: "Déjeuner", rowSpan: 1 }
+        ]
+      }
+    ];
+
+    const days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+    const skipCount = Array(days.length).fill(0);
+
+    const tbody = document.getElementById("scheduleBody");
+
+    schedule.forEach(row => {
+      const tr = document.createElement("tr");
+
+      const hourTd = document.createElement("td");
+      hourTd.textContent = row.hour;
+      tr.appendChild(hourTd);
+
+      row.events.forEach((event, index) => {
+        if (skipCount[index] > 0) {
+          skipCount[index]--;
+          return;
+        }
+
+        if (event.name === "skip") {
+          const td = document.createElement("td");
+          td.className = "empty";
+          tr.appendChild(td);
+        } else {
+          const td = document.createElement("td");
+          td.textContent = event.name;
+          if (event.rowSpan && event.rowSpan > 1) {
+            td.rowSpan = event.rowSpan;
+            skipCount[index] = event.rowSpan - 1;
+          }
+          tr.appendChild(td);
+        }
+      });
+
+      tbody.appendChild(tr);
+    });
+</script>
+</body>
+</html>

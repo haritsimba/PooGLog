@@ -4,17 +4,15 @@
     import isstm.glog.poo.enumerations.haritsimba.Niveau;
     import isstm.glog.poo.enumerations.haritsimba.Parcours;
     import jakarta.persistence.*;
-    import lombok.AllArgsConstructor;
-    import lombok.Getter;
-    import lombok.NoArgsConstructor;
-    import lombok.Setter;
+    import lombok.*;
 
     @Entity
     @NoArgsConstructor
     @AllArgsConstructor
     @Getter
     @Setter
-    @Table(name = "student")
+    @Table(name = "classe")
+    @ToString
     public class Classe extends AbstractClasse {
         @Id
         @GeneratedValue(strategy = GenerationType.TABLE)
@@ -24,13 +22,22 @@
         @Enumerated(EnumType.STRING)
         Parcours department;
 
+        String autreParcours; // Stocke "Finance", "Architecture", etc.
+
+        @Override
+        public String getParcours() {
+            return department != null ? department.getLibelle() :
+                    autreParcours != null ? autreParcours.toUpperCase() :
+                            "";
+        }
+
         @Override
         public String getNiveau() {
             return this.level.toString();
         }
 
         @Override
-        public String getParcours() {
-            return this.department.toString();
+        public Long getClasseId(){
+            return this.id;
         }
     }

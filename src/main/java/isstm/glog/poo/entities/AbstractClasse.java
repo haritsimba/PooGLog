@@ -18,7 +18,7 @@ public abstract class AbstractClasse {
 
 
     @Column(name = "classe_id")
-    protected Long classeID;
+    protected Long classeId;
 
     @OneToMany(mappedBy = "classe",targetEntity = Subject.class)
     protected List<? extends AbstractSubject> subjects;

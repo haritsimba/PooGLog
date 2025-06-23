@@ -1,89 +1,149 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:time="http://www.thymeleaf.org/extras/java8time" lang="fr">
+
 <head>
-    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Emploi du temps - Examens L2 GI</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-        }
-        h2, h4, p {
-            text-align: center;
-            margin: 0;
-        }
-        .university {
-            margin-top: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 25px;
-        }
-        th, td {
-            border: 1px solid #333;
-            padding: 6px;
-            text-align: center;
-        }
-        th {
-            background-color: #e0e0e0;
-        }
-        .footer {
-            margin-top: 40px;
-            text-align: right;
-            font-size: 11px;
-        }
+        .header-table {
+    width: 100%;
+    border: none !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    margin-bottom: 20px;
+}
+
+.header-table tr,
+.header-table td {
+    border: none !important;
+    padding: 0;
+    margin: 0;
+}
+
+.logo-cell {
+    width: 20%;
+    vertical-align: middle;
+}
+.logo-left {
+    text-align: left;
+    padding-top: 10px; /* Ajout de padding */
+}
+.logo-right {
+    text-align: right;
+    padding-top: 10px; /* Ajout de padding */
+}
+.title-cell {
+    width: 60%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 15px 0; /* Padding vertical augmenté */
+}
+.university-title {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.2;
+}
+.main-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+.sub-title {
+    font-size: 12px;
+    margin: 3px 0;
+}
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+    }
+    h2, h4, p {
+        text-align: center;
+        margin: 0;
+    }
+    .university {
+        padding-top: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 25px;
+    }
+    th, td {
+        border: 1px solid #333;
+        padding: 6px;
+        text-align: center;
+    }
+    th {
+        background-color: #e0e0e0;
+    }
+    .footer {
+        margin-top: 40px;
+        text-align: right;
+        font-size: 11px;
+    }
     </style>
 </head>
 <body>
-<div style="display: flex; justify-content: space-between; align-items: center;">
-    <img src="file:images/logo_isstm.png" alt="Logo UMJ" width="80" />
-    <img src="file:images/logo_univ_mahajanga.png" alt="Logo ESTM" width="80" />
-</div>
 
-<div class="university">
-    <h2>UNIVERSITÉ DE MAHAJANGA</h2>
-    <h4>École Supérieure des Sciences et Technologies</h4>
-    <p><strong>CALENDRIER DES EXAMENS DE LICENCE 2 - Génie Industriel</strong></p>
-    <p>Session 1 – Semestre 3 – Année universitaire 2024/2025</p>
-</div>
+<table class="header-table" border="0" cellspacing="0" cellpadding="0"
+       style="border: none; border-collapse: collapse; width: 100%; margin-bottom: 20px;">
+    <tr style="border: none;">
+        <td style="border: none; width: 20%; text-align: left; vertical-align: middle; padding: 10px 0;">
+            <img th:src="${logoIsstmBase64}" alt="Logo UMJ" width="80" src=""/>
+        </td>
 
-<table>
+        <td style="border: none; width: 60%; text-align: center; vertical-align: middle; padding: 15px 10px;">
+            <h2 style="font-family: Arial; font-size: 16px; margin: 0 0 5px 0;">UNIVERSITÉ DE MAHAJANGA</h2>
+            <h4 style="font-family: Arial; font-size: 14px; margin: 0 0 8px 0;">École Supérieure des Sciences et
+                Technologies de Mahajanga</h4>
+            <p style="font-weight: bold; margin: 5px 0;">EMPLOI DU TEMPS - <span
+                    th:text="${classe.level + ' '+ #strings.toUpperCase(classe.getParcours())}">
+                    GÉNIE INDUSTRIEL
+                </span></p>
+            <p style="font-size: 11px; margin: 3px 0; font-family: Arial;">Année universitaire
+                2024/2025</p>
+        </td>
+
+        <td style="border: none; width: 20%; text-align: right; vertical-align: middle; padding: 10px 0;">
+            <img th:src="${logoUnivBase64}" alt="Logo ESTM" width="80"/>
+        </td>
+    </tr>
+</table>
+
+<table class="edt-table">
     <thead>
     <tr>
         <th>Heure</th>
-        <th>Lundi</th>
-        <th>Mardi</th>
-        <th>Mercredi</th>
-        <th>Jeudi</th>
-        <th>Vendredi</th>
-        <th>Samedi</th>
+        <th th:each="day : ${days}" th:text="${T(java.time.DayOfWeek).valueOf(day).getDisplayName(T(java.time.format.TextStyle).FULL, T(java.util.Locale).FRENCH)}"></th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="row : ${schedule}">
-        <td th:text="${row.key}"></td>
-        <td th:each="day : ${days}">
-        <span th:if="${row.value[day] != null}"
-              th:text="${row.value[day].subject.name + ' - ' + row.value[day].teacher.name}">
-        </span>
-        </td>
-    </tr>
-    <tr>
-        <td>14:00 - 17:00</td>
-        <td>Probabilités - M. Raphaëlson</td>
-        <td>Initiation au Matlab - Mme Olga</td>
-        <td>Anglais - Mme Niasoa</td>
-        <td>Transfert Thermique - M. Riheulhaja</td>
-        <td>RDM Appliquée - M. Riheulhaja</td>
-        <td></td>
+    <tr th:each="timeSlot : ${schedule}">
+        <td th:text="${timeSlot.key}"></td>
+
+        <th:block th:each="day : ${days}">
+            <!-- Case avec cours -->
+            <td th:if="${timeSlot.value[T(java.time.DayOfWeek).valueOf(day)] != null and !timeSlot.value[T(java.time.DayOfWeek).valueOf(day)].skip}"
+                th:class="'has-course'"
+                th:rowspan="${timeSlot.value[T(java.time.DayOfWeek).valueOf(day)].rowSpan}">
+
+                <div class="course-cell">
+                    <div class="course-name"
+                         th:text="${timeSlot.value[T(java.time.DayOfWeek).valueOf(day)].subjectName}"></div>
+                    <div class="teacher-name"
+                         th:text="${timeSlot.value[T(java.time.DayOfWeek).valueOf(day)].teacherName}"></div>
+                </div>
+            </td>
+
+            <td th:if="${timeSlot.value[T(java.time.DayOfWeek).valueOf(day)] == null}">
+            </td>
+        </th:block>
     </tr>
 
     </tbody>
 </table>
-
 <div class="footer">
-    Mahajanga, le 26 avril 2025<br />
+    Mahajanga, le <span th:text="${dateToday}"></span><br/>
     Le Chef de département
 </div>
 </body>

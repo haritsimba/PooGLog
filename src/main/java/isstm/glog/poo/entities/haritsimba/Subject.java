@@ -1,10 +1,7 @@
 package isstm.glog.poo.entities.haritsimba;
 
 import isstm.glog.poo.entities.AbstractSubject;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,10 +13,16 @@ import lombok.Setter;
 @Entity(name = "subject")
 @Getter
 @Setter
+@Table(name = "subject")
 public class Subject extends AbstractSubject {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @NotNull
     String name;
+
+    @Override
+    public Long getSubjectId(){
+        return this.id;
+    }
 }

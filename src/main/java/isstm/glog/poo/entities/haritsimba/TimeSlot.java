@@ -2,10 +2,7 @@ package isstm.glog.poo.entities.haritsimba;
 
 import isstm.glog.poo.entities.AbstractTimeSlot;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -20,9 +17,10 @@ import java.time.LocalTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class TimeSlot extends AbstractTimeSlot {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     LocalTime startTime;
     LocalTime endTime;

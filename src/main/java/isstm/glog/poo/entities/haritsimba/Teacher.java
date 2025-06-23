@@ -22,4 +22,8 @@ public class Teacher extends AbstractTeacher {
     Long id;
     @NotNull
     String name;
+    @Override
+    public Long getTeacherId(){
+        return this.id;
+    }
 }
